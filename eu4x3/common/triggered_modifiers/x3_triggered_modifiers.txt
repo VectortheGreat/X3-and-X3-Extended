@@ -1,0 +1,308 @@
+
+######################################
+# Crusader
+######################################
+crusader = {
+	potential = {
+		religion = catholic
+		crusade_target = {
+			exists = yes
+		}
+		
+	}
+
+	trigger = {
+		
+		crusade_target = {
+			war_with = ROOT
+			any_province = {
+				controlled_by = root
+			}
+		}  
+		land_maintenance = 1.0
+	}
+
+	global_manpower_modifier = 0.9
+	global_tax_modifier = 0.3
+	land_morale = 0.3
+	prestige = 3
+	papal_influence = 3
+	devotion = 0.75
+	#icon = 9
+}
+
+######################################
+# Excommunication
+######################################
+excommunication = {
+	potential = {
+		religion = catholic	
+	}
+
+	trigger = {
+		is_excommunicated = yes
+		
+	}
+
+	prestige = -6
+	tolerance_own = -9
+	devotion = -15
+	papal_influence = -30
+	#icon = 10
+}
+
+east_indian_trade_route = {
+	potential = {
+		num_of_ports = 1
+		NOT = {
+			capital_scope = {
+				continent = asia
+			}
+		}
+		NOT = {
+			capital_scope = {
+				continent = oceania
+			}
+		}
+		
+	}
+
+	trigger = {
+		has_discovered = 1460 # Cape of Good Hope
+		num_of_ports = 4
+		has_idea = quest_for_the_new_world
+		any_active_trade_node = {
+			has_merchant = ROOT
+			OR = {
+				province_id = 1361 # Straits of Johor
+				province_id = 1343 # Ganges Delta
+				province_id = 504 # Sind
+				province_id = 1340 # Comorin Cape
+			}
+		}
+	}
+
+	trade_efficiency = 0.15	
+}
+
+custodian_of_the_two_holy_mosques = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_discovered = 385	# Mecca
+		has_discovered = 384	# Medina
+		religion_group = muslim
+	}
+
+	trigger = {
+		is_free_or_tributary_trigger = yes
+		owns_or_vassal_of = 385
+		owns_or_vassal_of = 384
+	}
+
+	legitimacy = 1.5
+	missionaries = 3
+}
+
+catholic_rome = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_discovered = 118	# Roma
+		religion = catholic
+		NOT = { tag = PAP }
+	}
+
+	trigger = {	
+		NOT = { overlord_of = PAP }
+		owns_or_vassal_of = 118 # Roma		
+		NOT = { tag = ITA }
+		NOT = { tag = HLR }
+		NOT = { tag = ROM }
+	}
+
+	papal_influence = -30
+	diplomatic_reputation = -3
+	#icon = 9
+}
+
+papal_subjugation = {
+	potential = {
+		normal_or_historical_nations = yes
+		has_discovered = 118	# Roma
+		religion = catholic
+		NOT = { tag = PAP }
+	}
+
+	trigger = {	
+		overlord_of = PAP
+		NOT = { tag = ITA }
+		NOT = { tag = HLR }
+		if = {
+			limit = {
+				is_emperor = yes
+				has_dlc = "Emperor"
+			}
+			OR = {
+				PAP = {
+					NOT = { is_part_of_hre = yes }	#Needs to be written like that for localization purpose
+				}
+				NOT = { hre_reform_passed = emperor_privilegia_de_non_appelando }
+			}
+		}
+		else_if = {
+			limit = {
+				is_emperor = yes
+				NOT = { has_dlc = "Emperor" }
+			}
+			OR = {
+				PAP = {
+					NOT = { is_part_of_hre = yes }	#Needs to be written like that for localization purpose
+				}
+				NOT = { hre_reform_passed = privilegia_de_non_appelando }
+			}
+		}
+	}
+
+	diplomatic_reputation = -6
+	#icon = 9
+}
+
+pentarchy_mod = {
+	potential = {
+		normal_or_historical_nations = yes
+		religion = orthodox
+		OR = {
+			has_discovered = 118 	# Rome
+			has_discovered = 151 	# Constantinople
+			has_discovered = 2313 	# Antioch
+			has_discovered = 379 	# Jerusalem
+			has_discovered = 358 	# Alexandria
+		}
+	}
+
+	trigger = {
+		owns = 118 	# Rome
+		owns = 151 	# Constantinople
+		owns = 2313 # Antioch
+		owns = 379 	# Jerusalem
+		owns = 358 	# Alexandria
+		118 = { religion = orthodox }
+		151 = { religion = orthodox }
+		2313 = { religion = orthodox }
+		379 = { religion = orthodox }
+		358 = { religion = orthodox }
+	}
+	
+	prestige = 1.5
+	missionaries = 3
+}
+
+the_mandate_of_heaven = {
+	potential = {
+		has_reform = celestial_empire
+		NOT = { has_dlc = "Mandate of Heaven" }
+	}
+	
+	trigger = {	
+		stability = 0
+		legitimacy = 60
+		num_of_cities = 20
+	}
+
+	stability_cost_modifier = -0.3
+	global_unrest = -15
+}
+
+the_mandate_of_heaven_lost = {
+	potential = {
+		has_reform = celestial_empire
+		NOT = { has_dlc = "Mandate of Heaven" }
+	}
+
+	trigger = {
+		OR = {
+			NOT = { stability = 0 }
+			NOT = { legitimacy = 60 }
+			NOT = { num_of_cities = 20 }	
+		}
+	}
+
+	discipline = -0.3
+	stability_cost_modifier = 1.5
+	global_unrest = 30
+}
+
+lost_control_of_beijing = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 1816 }
+			NOT = { controls = 1816 }
+		}
+	}
+
+	ai_weight = {
+		factor = -1000 # Do what you can to avoid this modifier
+	}
+
+	imperial_mandate = -0.15
+}
+
+lost_control_of_nanjing = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 1821 }
+			NOT = { controls = 1821 }
+		}
+	}
+
+	ai_weight = {
+		factor = -1000 # Do what you can to avoid this modifier
+	}
+
+	imperial_mandate = -0.15
+}
+
+lost_control_of_canton = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		OR = {
+			NOT = { owns = 667 }
+			NOT = { controls = 667 }
+		}
+	}
+
+	ai_weight = {
+		factor = -1000 # Do what you can to avoid this modifier
+	}
+
+	imperial_mandate = -0.15
+}
+
+waging_war_for_china = {
+	potential = {
+		has_reform = celestial_empire
+		has_dlc = "Mandate of Heaven"
+	}
+
+	trigger = {
+		is_in_war = {
+			attacker_leader = root
+			casus_belli = cb_chinese_unification
+		}
+	}
+	
+	imperial_mandate = 0.15
+}

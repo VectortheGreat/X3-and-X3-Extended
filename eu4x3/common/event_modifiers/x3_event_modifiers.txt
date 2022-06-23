@@ -1,0 +1,96 @@
+papal_sanction_for_church_taxes = {
+	global_tax_modifier = 0.45
+	build_cost = -0.3
+	religion = yes
+}
+
+papal_indulgence = {
+	legitimacy = 3
+	horde_unity = 3
+	meritocracy = 3
+	devotion = 3
+	republican_tradition = 0.6
+	improve_relation_modifier = 0.3
+	religion = yes
+}
+
+usury_forgiven = {
+	interest = -0.75
+	inflation_reduction = 0.3
+	yearly_corruption = -0.12
+	religion = yes
+}
+
+papal_blessing = {
+	prestige = 3
+	land_morale = 0.3
+	religion = yes
+}
+
+papal_sanction_for_holy_war = {
+	manpower_recovery_speed = 0.45
+	land_maintenance_modifier = -0.15
+	religion = yes
+}
+
+papal_legate = {
+	diplomatic_reputation = 3
+	diplomatic_annexation_cost = -0.3
+	religion = yes
+}
+
+##################################################
+# Harmonized Modifiers
+##################################################
+
+# Religions
+harmonized_vajrayana = {
+	production_efficiency = 0.3
+	religion = yes
+}
+
+harmonized_buddhism = { #Theravada
+	advisor_cost = -0.3
+	religion = yes
+}
+
+harmonized_mahayana = {
+	idea_cost = -0.3
+	religion = yes
+}
+
+harmonized_shinto = {
+	infantry_power = 0.3
+	religion = yes
+}
+
+# Religion Groups
+harmonized_pagan = {
+	global_unrest = -3
+	religion = yes
+}
+
+harmonized_jewish_group = {
+	global_institution_spread = 0.45
+	religion = yes
+}
+
+harmonized_zoroastrian_group = {
+	global_trade_goods_size_modifier = 0.3
+	religion = yes
+}
+
+harmonized_dharmic = {
+	diplomatic_reputation = 3
+	religion = yes
+}
+
+harmonized_muslim = {
+	trade_efficiency = 0.3
+	religion = yes
+}
+
+harmonized_christian = {
+	stability_cost_modifier = -0.3
+	religion = yes
+}
