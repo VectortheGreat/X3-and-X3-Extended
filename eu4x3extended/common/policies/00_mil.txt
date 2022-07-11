@@ -445,7 +445,7 @@ underhanded_diplomacy_act = {
 		full_idea_group = offensive_ideas
 	}
 	
-	mercenary_manpower = 15
+	mercenary_manpower = 1.5
 	diplomatic_reputation = 3
 
 	ai_will_do = {

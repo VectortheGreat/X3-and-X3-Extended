@@ -12,7 +12,7 @@ the_recruiting_act = {
 	}
 	
 	global_sailors_modifier = 0.75
-	allowed_marine_fraction = 0.15
+	allowed_marine_fraction = 0.75
 	ai_will_do = {
 		factor = 0.6
 		modifier = {
@@ -924,7 +924,7 @@ the_cooperation_act = {
 	}	
 	
 	caravan_power = 0.99
-	merchants = 1
+	merchants = 3
 	
 	ai_will_do = {
 		factor = 0.7
@@ -1319,10 +1319,10 @@ faith_advisors_policy = {
 	papal_influence = 3
 	church_power_modifier = 0.45
 	monthly_fervor_increase = 3
-	yearly_patriarch_authority = 1.5
+	yearly_patriarch_authority = 0.015
 	yearly_harmony = 1.5
-	yearly_karma_decay = 1.5
-	monthly_piety = 0.3
+	yearly_karma_decay = 0.15
+	monthly_piety = 0.003
 	diplomatic_reputation = 3
 
 	ai_will_do = {
